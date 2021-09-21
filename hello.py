@@ -119,14 +119,15 @@ def main():
         cookies = os.environ["HTTP_COOKIE"].split(',')
         print("<b>HTTP_COOKIE</b>: %s<br>" % (cookies))
 
-        for cookie in cookies:
-            (key, value) = cookie.split('=')
-            if key == "UserID":
-                username = value
-            if key == "Password":
-                password = value
-            if key == "LoggedIn":
-                loggedIn = True
+        if len(os.environ["HTTP_COOKIE"]) > 0:
+            for cookie in cookies:
+                (key, value) = cookie.split('=')
+                if key == "UserID":
+                    username = value
+                if key == "Password":
+                    password = value
+                if key == "LoggedIn":
+                    loggedIn = True
 
 
     if loggedIn:
